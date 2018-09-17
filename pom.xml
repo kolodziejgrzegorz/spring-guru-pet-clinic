@@ -55,6 +55,6 @@
 	</build>
     <scm>
         <developerConnection>scm:git:https://github.com/kolodziejgrzegorz/spring-guru-pet-clinic.git</developerConnection>
-  </scm>
+ 	 </scm>
 
 </project>
