@@ -1,10 +1,7 @@
 package guru.spring.petclinic.bootstrap;
 
 import guru.spring.petclinic.model.*;
-import guru.spring.petclinic.services.OwnerService;
-import guru.spring.petclinic.services.PetTypeService;
-import guru.spring.petclinic.services.SpecialityService;
-import guru.spring.petclinic.services.VetService;
+import guru.spring.petclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +14,14 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -41,7 +40,7 @@ public class DataLoader implements CommandLineRunner {
         PetType savedDogPetType = petTypeService.save(dog);
 
         PetType cat = new PetType();
-        cat.setName("Dog");
+        cat.setName("Cat");
         PetType savedCatPetType = petTypeService.save(cat);
 
         Speciality radiology = new Speciality();
@@ -89,6 +88,12 @@ public class DataLoader implements CommandLineRunner {
         ownerService.save(owner2);
 
         System.out.println("owners loaded");
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(nowaksPet);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Snezzy Kitty");
+        visitService.save(catVisit);
 
         Vet vet1 = new Vet();
         vet1.setFirstName("Jessie");
