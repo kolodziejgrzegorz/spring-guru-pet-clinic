@@ -1,5 +1,5 @@
 # spring-guru-pet-clinic
 
-[![CircleCI](https://circleci.com/gh/kolodziejgrzegorz/spring5-recipe-app.svg?style=svg)](https://circleci.com/gh/kolodziejgrzegorz/spring5-recipe-app)
+[![CircleCI](https://circleci.com/gh/kolodziejgrzegorz/spring-guru-pet-clinic.svg?style=svg)](https://circleci.com/gh/kolodziejgrzegorz/spring-guru-pet-clinic)
 
 Spring Guru course Pet Clinic
