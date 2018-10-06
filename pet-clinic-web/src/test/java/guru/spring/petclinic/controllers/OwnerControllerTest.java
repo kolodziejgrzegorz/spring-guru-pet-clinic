@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -23,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class OwnerControllerTest {
 
     @Mock
-    OwnerService service;
+    OwnerService ownerService;
 
     @InjectMocks
     OwnerController controller;
@@ -43,7 +44,7 @@ class OwnerControllerTest {
     @Test
     void listOwners() throws Exception {
 
-        when(service.findAll()).thenReturn(owners);
+        when(ownerService.findAll()).thenReturn(owners);
 
         mockMvc.perform(get("/owners/"))
                 .andExpect(status().is(200))
@@ -57,6 +58,7 @@ class OwnerControllerTest {
         mockMvc.perform(get("/owners/find"))
                 .andExpect(status().is(200))
                 .andExpect(view().name("notimplemented"));
+        verifyZeroInteractions(ownerService);
 
     }
 }
